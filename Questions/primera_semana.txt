@@ -1,0 +1,15 @@
+Include		Los archivos son incluidos con base en la ruta de acceso dada o,
+		si ninguna es dada finalmente verificará en el propio directorio del script que hace 
+		la llamada y en el directorio de trabajo actual, antes de fallar.
+		El constructor include emitirá una advertencia si no puede encontrar un archivo,
+		éste es un comportamiento diferente al de require, el cual emitirá un error fatal..
+
+Require		Require es idéntico a include excepto que en caso de fallo producirá un error fatal de nivel E_COMPILE_ERROR. En otras palabras,
+		éste detiene el script mientras que include sólo emitirá una advertencia (E_WARNING) lo cual permite continuar el script.
+
+Include_once	incluye y evalúa el fichero especificado durante la ejecución del script. Tiene un comportamiento similar al de la sentencia include,
+		siendo la única diferencia de que si el código del fichero ya ha sido incluido,
+		no se volverá a incluir, e include_once devolverá true. Como su nombre indica, el fichero será incluido solamente una vez.
+
+Require_once	La sentencia require_once es idéntica a require excepto que PHP verificará si el archivo ya ha sido incluido y si es así,
+		no se incluye (require) de nuevo.
