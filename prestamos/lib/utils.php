@@ -19,13 +19,16 @@ function get_prestamos()
 		<tbody>";
 
         foreach ($filas as $linea) {
-            $columna = explode("\t", $linea);
-            $resultado .= '<tr>';
-            $resultado .= '<td scope="row">' . $columna[0] . '</td>';
-			$resultado .= '<td scope="row">' . $columna[1] . '</td>';
-			$resultado .= '<td scope="row">' . $columna[2] . '</td>';
-			$resultado .= '<td scope="row">' . $columna[3] . '</td>';
-            $resultado .= '</tr>';
+
+            $columnas = explode("\t", $linea);
+            if (count($columnas) == 4) {
+                $resultado .= '<tr>';
+                $resultado .= '<td scope="row">' . $columnas[0] . '</td>';
+                $resultado .= '<td scope="row">' . $columnas[1] . '</td>';
+                $resultado .= '<td scope="row">' . $columnas[2] . '</td>';
+                $resultado .= '<td scope="row">' . $columnas[3] . '</td>';
+                $resultado .= '</tr>';
+            }
         }
         $resultado .= "</tbody></table>";
 
