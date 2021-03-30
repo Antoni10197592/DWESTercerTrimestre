@@ -1,23 +1,32 @@
-<?php require_once 'lib/utils.php'?>
 <!doctype html>
 <html lang="en">
   <head>
-	<title>Prestamos Folch</title>
+	<title>Iniciar Sesión</title>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
+
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-  <body>
-  <h1>Prestamos Folch</h1>
-  <a href="add.php">Nuevo Prestamo</a>	<!--Link a Inicio de Sesion-->
-  <a href="login.php">Login</a>	<!--Link a Inicio de Sesion-->
-  <?php
-  echo get_prestamos();
-  ?>
+  <body>  <!--action="Direccion del controlador" method="post"(envia los datos)-->
 
+  <form action="controler.php" method="post">
+
+  <div >
+    <label>Usuario</label>
+    <input type="user"id="user" placeholder="Enter User">
+  </div>
+
+  <div >
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Password">
+  </div>
+
+  <button type="login">Login</button>
+  <button type="cancel"><a href="index.php">Cancelar</a></button>
+
+</form>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
