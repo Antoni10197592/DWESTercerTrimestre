@@ -1,3 +1,4 @@
 juan	libro	El señor de los anillos	15/03/2021
 julio	cd	El canto del loco	21/03/2021
-jose	Film
+
+Alo	CD	GG	20/12/20

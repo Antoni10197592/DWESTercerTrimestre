@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-	<title><h1>Nuevo Prestamo</h1></title>
+	<title>Nuevo Prestamo</title>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,26 +15,26 @@
 
   <div >
     <label>Nombre</label>
-    <input id="name" placeholder="Nombre">
+    <input name="name" placeholder="Nombre">
   </div>
 
   <div >
     <label>Tipo</label>
-    <input id="type" placeholder="Tipo">
+    <input name="type" placeholder="Tipo">
   </div>
 
   <div >
     <label>Titulo</label>
-    <input id="title" placeholder="Introduce un Titulo">
+    <input name="title" placeholder="Introduce un Titulo">
   </div>
 
   <div >
     <label>Fecha</label>
-    <input id="date" placeholder="Fecha">
+    <input name="date" placeholder="Fecha">
   </div>
 
-  <button type="submit">Guardar</button>
-  <button type="cancel"><a href="index.php">Cancelar</a></button>
+  <button name='Guardar' type="submit">Guardar</button>
+  <button name='Cancelar'type="submit">Cancelar</button>
 
 </form>
 	<!-- Optional JavaScript -->
