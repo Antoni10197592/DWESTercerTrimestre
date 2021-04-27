@@ -1,5 +1,13 @@
 
 <?php
+function conexion_bd(){
+    $usuario = 'antoni';
+    $contrasenya = 'alumno';
+    $servidor = 'localhost';
+    $bdatos = 'prestamos';
+    $conexion = mysqli_connect($servidor, $usuario, $contrasenya,);
+    return $conexion;
+}
 function get_prestamos(){
     $usuario = 'antoni';
     $contrasenya = 'alumno';

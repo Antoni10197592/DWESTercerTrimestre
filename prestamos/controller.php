@@ -1,4 +1,4 @@
-<?php
+<?php require_once 'lib/utils.php';
 
 if(isset($_POST['Guardar'])){
 // Obtengo los datos cargados desde add.php.
@@ -15,12 +15,8 @@ if(empty($name) || empty($type) || empty($title) || empty($date)){
 
 } else {
     // Guardo el contenido en el fichero. 
-	//fopen("direccion_del_fichero", "que haces con el(w, empieza a escribir el principìo, a empieza por el final)");
-    $file = fopen("data/prestamos.txt", "a");
-
-    fwrite($file, "$name\t$type\t$title\t$date" . PHP_EOL);
-
-    fclose($file);
+	$sql="INSERT INTO Prestamos(Tipo, Descripcion, Fecha, ID_persona)
+    VALUES($type, $title, $date, $name)";
 
     // Redirecciono al usuario a la página principal del sitio.
     header("Location: index.php");

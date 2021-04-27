@@ -1,4 +1,4 @@
-<?php require_once 'lib/utils.php'?>
+<?php require_once 'lib/utils.php';?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,8 +12,8 @@
   </head>
   <body>
   <h1>Prestamos Folch</h1>
-  <a href="add.php">Nuevo Prestamo</a>	<!--Link a Inicio de Sesion-->
-  <a href="login.php">Login</a>	<!--Link a Inicio de Sesion-->
+  <a href="add.php">Nuevo Prestamo</a>	<!--Link a Nuevo Prestamo-->
+  
   <?php
   $lista=get_prestamos();
   echo get_prestamos_tabla($lista);

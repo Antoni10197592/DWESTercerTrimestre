@@ -11,30 +11,30 @@
   </head>
   <body>  <!--action="Direccion del controlador" method="post"(envia los datos)-->
 
-  <form action="controller.php" method="post">
+  <form class="form" action="controller.php" method="post">
 
-  <div >
-    <label>Nombre</label>
-    <input name="name" placeholder="Nombre">
-  </div>
+    <div class="form-group">
+      <label>Nombre</label>
+      <input name="name" placeholder="Nombre">
+    </div>
 
-  <div >
-    <label>Tipo</label>
-    <input name="type" placeholder="Tipo">
-  </div>
+    <div class="form-group">
+      <label>Tipo</label>
+      <input name="type" placeholder="Tipo">
+    </div>
 
-  <div >
-    <label>Titulo</label>
-    <input name="title" placeholder="Introduce un Titulo">
-  </div>
+    <div class="form-group">
+      <label>Titulo</label>
+      <input name="title" placeholder="Introduce un Titulo">
+    </div>
 
-  <div >
-    <label>Fecha</label>
-    <input name="date" placeholder="Fecha">
-  </div>
+    <div class="form-group">
+      <label>Fecha</label>
+      <input name="date" placeholder="Fecha">
+    </div>
 
-  <button name='Guardar' type="submit">Guardar</button>
-  <button name='Cancelar'type="submit">Cancelar</button>
+    <button class="btn btn-primary" name='Guardar' type="submit">Guardar</button>
+    <button class="btn btn-primary" name='Cancelar'type="submit">Cancelar</button>
 
 </form>
 	<!-- Optional JavaScript -->
