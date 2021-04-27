@@ -1,11 +1,11 @@
 
 <?php
-function conectar_bd(){
+function get_prestamos(){
     $usuario = 'antoni';
     $contrasenya = 'alumno';
     $servidor = 'localhost';
     $bdatos = 'prestamos';
-    $conexion = mysqli_connect($servidor, $usuario, $contrasenya,);
+    $conexion = mysqli_connect($servidor, $usuario, $contrasenya,); /* */
     $db = mysqli_select_db($conexion, $bdatos);
     $sql = "SELECT * FROM Prestamos";
 
@@ -51,19 +51,7 @@ function get_prestamos_tabla($filas){
        
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Ejemplo tabla
 function get_prestamos()
 {
     $contenido = file_get_contents('data/prestamos.txt', false);
@@ -98,5 +86,5 @@ function get_prestamos()
 
         return $resultado;
     }
-}
+}*/
 ?>

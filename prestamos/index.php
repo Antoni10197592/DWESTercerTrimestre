@@ -15,7 +15,7 @@
   <a href="add.php">Nuevo Prestamo</a>	<!--Link a Inicio de Sesion-->
   <a href="login.php">Login</a>	<!--Link a Inicio de Sesion-->
   <?php
-  $lista=conectar_bd();
+  $lista=get_prestamos();
   echo get_prestamos_tabla($lista);
   ?>
 
