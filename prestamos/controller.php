@@ -15,9 +15,8 @@ if(empty($name) || empty($type) || empty($title) || empty($date)){
 
 } else {
     // Guardo el contenido en el fichero. 
-	$sql="INSERT INTO Prestamos(Tipo, Descripcion, Fecha, ID_persona)
-    FROM Prestamos INNER JOIN Prestamos.ID_persona = Persona.Nombre
-    VALUES($type, $title, $date, $name)";
+    insertarPrestamo($name, $type, $title, $date);
+
 
     // Redirecciono al usuario a la página principal del sitio.
     header("Location: index.php");

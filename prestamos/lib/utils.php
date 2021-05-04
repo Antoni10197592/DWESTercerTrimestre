@@ -1,24 +1,35 @@
 
 <?php
-function conexion_bd(){
+function conexion_bd()
+{
     $usuario = 'antoni';
     $contrasenya = 'alumno';
     $servidor = 'localhost';
     $bdatos = 'prestamos';
-    $conexion = mysqli_connect($servidor, $usuario, $contrasenya,);
+    $conexion = mysqli_connect($servidor, $usuario, $contrasenya, $bdatos);
     return $conexion;
 }
-function get_prestamos(){
+function get_persona_id($name)
+{
+    $sql = "SELECT ID FROM Persona WHERE $name";
+    $conexion = conexion_bd();
+    $consulta = mysqli_query($conexion, $sql);
+    if ($consulta && mysqli_num_rows($consulta) > 0) {
+        mysql_fetch_assoc();
+    }
+}
+function get_prestamos()
+{
     $usuario = 'antoni';
     $contrasenya = 'alumno';
     $servidor = 'localhost';
     $bdatos = 'prestamos';
-    $conexion = mysqli_connect($servidor, $usuario, $contrasenya,); /* */
+    $conexion = mysqli_connect($servidor, $usuario, $contrasenya, ); /* */
     $db = mysqli_select_db($conexion, $bdatos);
-    $sql = "SELECT * FROM Prestamos";
-
+    $sql = "SELECT Prestamos.ID_pedido, Prestamos.Tipo, Prestamos.Descripcion, Prestamos.Fecha, Persona.Nombre
+    FROM Prestamos JOIN Persona ON Prestamos.ID_persona = Persona.ID";
     $consulta = mysqli_query($conexion, $sql);
-    $resultado=array();
+    $resultado = array();
 
     if ($consulta) {
         if (mysqli_num_rows($consulta) > 0) {
@@ -30,69 +41,38 @@ function get_prestamos(){
     return $resultado;
 }
 
-function get_prestamos_tabla($filas){
-    
-        $resultado = "<table class=\"table\">
+function get_prestamos_tabla($filas)
+{
+
+    $resultado = "<table class=\"table\">
 		<thead>
 			<tr>
 				<th>ID Pedido</th>
 				<th>Tipo</th>
 				<th>Descripcion</th>
 				<th>Fecha</th>
-                <th>ID Persona</th>
+                <th>Nombre</th>
 			</tr>
 		</thead>
 		<tbody>";
 
-        foreach ($filas as $linea) {
-                $resultado .= '<tr>';
-                $resultado .= '<td scope="row">' . $linea['ID_pedido'] . '</td>';
-                $resultado .= '<td scope="row">' . $linea['Tipo'] . '</td>';
-                $resultado .= '<td scope="row">' . $linea['Descripcion'] . '</td>';
-                $resultado .= '<td scope="row">' . $linea['Fecha'] . '</td>';
-                $resultado .= '<td scope="row">' . $linea['ID_persona'] . '</td>';
-                $resultado .= '</tr>';
-        }
-        $resultado .= "</tbody></table>";
-
-        return $resultado;
-       
-}
-
-/* Ejemplo tabla
-function get_prestamos()
-{
-    $contenido = file_get_contents('data/prestamos.txt', false);
-    if ($contenido == false) {
-        echo 'No hay prestamos.';
-    } else {
-        $filas = explode("\n", $contenido);
-        $resultado = "<table class=\"table\">
-		<thead>
-			<tr>
-				<th>Usuario</th>
-				<th>Tipo</th>
-				<th>Nombre</th>
-				<th>Fecha</th>
-			</tr>
-		</thead>
-		<tbody>";
-
-        foreach ($filas as $linea) {
-
-            $columnas = explode("\t", $linea);
-            if (count($columnas) == 4) {
-                $resultado .= '<tr>';
-                $resultado .= '<td scope="row">' . $columnas[0] . '</td>';
-                $resultado .= '<td scope="row">' . $columnas[1] . '</td>';
-                $resultado .= '<td scope="row">' . $columnas[2] . '</td>';
-                $resultado .= '<td scope="row">' . $columnas[3] . '</td>';
-                $resultado .= '</tr>';
-            }
-        }
-        $resultado .= "</tbody></table>";
-
-        return $resultado;
+    foreach ($filas as $linea) {
+        $resultado .= '<tr>';
+        $resultado .= '<td scope="row">' . $linea['ID_pedido'] . "</td>\n";
+        $resultado .= '<td scope="row">' . $linea['Tipo'] . "</td>\n";
+        $resultado .= '<td scope="row">' . $linea['Descripcion'] . "</td>\n";
+        $resultado .= '<td scope="row">' . $linea['Fecha'] . "</td>\n";
+        $resultado .= '<td scope="row">' . $linea['Nombre'] . "</td>\n";
+        $resultado .= '</tr>';
     }
-}*/
+    $resultado .= "</tbody></table>";
+
+    return $resultado;
+
+}
+function insertarPrestamo($name, $type, $title, $date ){
+    $sql="INSERT INTO Prestamos.Tipo, Prestamos.Descripcion, Prestamos.Fecha, Persona.Nombre)
+    FROM Prestamos JOIN Persona ON Prestamos.ID_persona = Persona.ID
+    VALUES($type, $title, $date, $name)";
+}
 ?>
