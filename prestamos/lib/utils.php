@@ -11,11 +11,20 @@ function conexion_bd()
 }
 function get_persona_id($name)
 {
-    $sql = "SELECT ID FROM Persona WHERE $name";
     $conexion = conexion_bd();
-    $consulta = mysqli_query($conexion, $sql);
-    if ($consulta && mysqli_num_rows($consulta) > 0) {
-        mysql_fetch_assoc();
+    $select = "SELECT * FROM Persona WHERE nombre LIKE '$name'";
+   
+    $datos = mysqli_query($conexion, $select);
+    $row = mysql_fetch_array($datos);
+
+       if ($row == null) {
+        return false;
+
+    } else {
+
+        $idPersona = $row['id'];
+
+        return $idPersona;
     }
 }
 function get_prestamos()
@@ -74,5 +83,24 @@ function insertarPrestamo($name, $type, $title, $date ){
     $sql="INSERT INTO Prestamos.Tipo, Prestamos.Descripcion, Prestamos.Fecha, Persona.Nombre)
     FROM Prestamos JOIN Persona ON Prestamos.ID_persona = Persona.ID
     VALUES($type, $title, $date, $name)";
+$conexion = conectarBaseDeDatos();
+$id = seleccionId($nombre);
+
+if ($id == false) {
+
+    $insertPersona = "INSERT INTO Persona (nombre) VALUES ('$nombre')";
+    $insertPersonasql = mysqli_query($conexion, $insertPersona);
+
+    $insertPrestamo = "INSERT INTO Prestamos (tipo, informacion, fecha, id_persona)
+        VALUES ('$tipo', '$informacion', '$fecha', $id)";
+    $insertPrestamosql = mysqli_query($conexion, $insertPrestamo);
+
+} else {
+
+    $insertPrestamo = "INSERT INTO Prestamos (tipo, informacion, fecha, id_persona)
+        VALUES ('$tipo', '$informacion', '$fecha', $id)";
+
+    $insertPrestamosql = mysqli_query($conexion, $insertPrestamo);
+}
 }
 ?>
