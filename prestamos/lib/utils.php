@@ -6,6 +6,7 @@ function conexion_bd()
     $contrasenya = 'alumno';
     $servidor = 'localhost';
     $bdatos = 'prestamos';
+
     $conexion = mysqli_connect($servidor, $usuario, $contrasenya, $bdatos);
     return $conexion;
 }
@@ -33,10 +34,12 @@ function get_prestamos()/*obtiene los prestamos */
     $contrasenya = 'alumno';
     $servidor = 'localhost';
     $bdatos = 'prestamos';
+
     $conexion = mysqli_connect($servidor, $usuario, $contrasenya, ); /* */
     $db = mysqli_select_db($conexion, $bdatos);
     $sql = "SELECT Prestamos.ID_pedido, Prestamos.Tipo, Prestamos.Descripcion, Prestamos.Fecha, Persona.Nombre
     FROM Prestamos JOIN Persona ON Prestamos.ID_persona = Persona.ID";
+
     $consulta = mysqli_query($conexion, $sql);
     $resultado = array();
 
@@ -79,7 +82,52 @@ function get_prestamos_tabla($filas)
     return $resultado;
 
 }
+
+function get_amigos(){
+
+    $conexion = conexion_bd();
+    $select = "SELECT Nombre FROM Persona";
+   
+    $datos = mysqli_query($conexion, $select);
+	$resultado = array();
+
+
+    if ($datos) {
+        if (mysqli_num_rows($datos) > 0) {
+            while ($row = mysqli_fetch_assoc($datos)) {
+                array_push($resultado, $row);
+            }
+        }
+    }
+	return $resultado;
+}
+
+function get_amigos_tabla($filas)
+{
+
+    $resultado = "<table class=\"table table-sm\">
+		<thead>
+			<tr>
+                <th>Nombre</th>
+			</tr>
+		</thead>
+		<tbody>";
+
+    foreach ($filas as $linea) {
+        $resultado .= '<tr>';
+        $resultado .= '<td scope="row"><a href="./friendDetail.php?nombre=' . $linea['nombre'] . '">' . $linea['Nombre'] . "</td>\n";
+        
+
+        $resultado .= '</tr>';
+    }
+    $resultado .= "</tbody></table>";
+
+    return $resultado;
+
+}
+
 function insertarPrestamo($name, $type, $title, $date ){
+
     /*sentencia sql para añadir prestamos a la tabla */
     $sql="INSERT INTO Prestamos (Tipo, Descripcion, Fecha, ID_persona)
     VALUES('$type', '$title', '$date', $name)";
@@ -88,11 +136,14 @@ function insertarPrestamo($name, $type, $title, $date ){
     $id = get_persona_id($name);
 
     if ($id == false) {
+
         /*añade el nuevo nombre a la tabla persona */
         $insertPersona = "INSERT INTO Persona (Nombre) VALUES ('$name')";
         $insertPersonasql = mysqli_query($conexion, $insertPersona);
+    
         /*recuperamos el nuevo id */
         $id = get_persona_id($name);
+
         /*insertamos el prestamo */
         $insertPrestamo = "INSERT INTO Prestamos (Tipo, Descripcion, Fecha, ID_persona)
             VALUES ('$type', '$title', '$date', $id)";

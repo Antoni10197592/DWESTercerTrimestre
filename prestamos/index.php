@@ -1,4 +1,5 @@
 <?php require_once 'lib/utils.php';?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,7 +18,10 @@
   <?php
   $lista=get_prestamos();
   echo get_prestamos_tabla($lista);
+  $amigos=get_amigos();
+  echo get_amigos_tabla($amigos);
   ?>
+
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
