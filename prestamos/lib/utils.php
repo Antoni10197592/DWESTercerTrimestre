@@ -115,7 +115,7 @@ function get_amigos_tabla($filas)
 
     foreach ($filas as $linea) {
         $resultado .= '<tr>';
-        $resultado .= '<td scope="row"><a href="./friendDetail.php?nombre=' . $linea['nombre'] . '">' . $linea['Nombre'] . "</td>\n";
+        $resultado .= '<td scope="row"><a href="./friendDetail.php?Nombre=' . $linea['Nombre'] . '">' . $linea['Nombre'] . "</td>\n";
         
 
         $resultado .= '</tr>';
