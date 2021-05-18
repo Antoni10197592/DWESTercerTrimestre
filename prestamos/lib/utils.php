@@ -77,8 +77,8 @@ function get_prestamos_tabla($filas)
         $resultado .= '<td scope="row">' . $linea['Descripcion'] . "</td>\n";
         $resultado .= '<td scope="row">' . $linea['Fecha'] . "</td>\n";
         $resultado .= '<td scope="row">' . $linea['Nombre'] . "</td>\n";
-        $resultado .= '<td scope="row"><a href="./borrar.php?ID_pedido='.$linea['ID_pedido'].'"> Borrar</a>'."</td>\n";
-        $resultado .= '<td scope="row"><a href="./editar.php?ID_pedido='.$linea['ID_pedido'].'"> Editar</a>'."</td>\n";
+        $resultado .= '<td scope="row"><a href="borrar.php?ID_pedido='.$linea['ID_pedido'].'"> Borrar</a>'."</td>\n";
+        $resultado .= '<td scope="row"><a href="editar.php?ID_pedido='.$linea['ID_pedido'].'"> Editar</a>'."</td>\n";
 
         $resultado .= '</tr>';
     }
@@ -122,7 +122,7 @@ function get_amigos_tabla($filas)
     foreach ($filas as $linea) {
         $resultado .= '<tr>';
         $resultado .= '<td scope="row"><a href="./friendDetail.php?Nombre=' . $linea['Nombre'] . '">' . $linea['Nombre'] . "</td>\n";
-        $resultado .= '<td scope="row"><a href="./editar.php?Nombre='.$linea['Nombre'].'"> Editar</a>'."</td>\n";
+        $resultado .= '<td scope="row"><a href="editar.php?Nombre='.$linea['Nombre'].'"> Editar</a>'."</td>\n";
 
         $resultado .= '</tr>';
     }
@@ -205,8 +205,8 @@ function tabla_friend_detail(){
         $resultado .= '<td scope="row">' . $linea['Descripcion'] . "</td>\n";
         $resultado .= '<td scope="row">' . $linea['Fecha'] . "</td>\n";
         $resultado .= '<td scope="row">' . $linea['Nombre'] . "</td>\n";
-        $resultado .= '<td scope="row"><a href="./borrar.php?ID_pedido='.$linea['ID_pedido'].'"> Borrar</a>'."</td>\n";
-        $resultado .= '<td scope="row"><a href="./editar.php?ID_pedido='.$linea['ID_pedido'].'"> Editar</a>'."</td>\n";
+        $resultado .= '<td scope="row"><a href="borrar.php?ID_pedido='.$linea['ID_pedido'].'"> Borrar</a>'."</td>\n";
+        $resultado .= '<td scope="row"><a href="editar.php?ID_pedido='.$linea['ID_pedido'].'"> Editar</a>'."</td>\n";
 
         $resultado .= '</tr>';
     }
