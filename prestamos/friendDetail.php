@@ -1,49 +1,24 @@
-<?php
-require_once 'lib/utils.php';
+<?php require_once 'lib/utils.php';?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	
-	$persona=get_persona_id($_GET ["Nombre"]);
-	$conexion=conexion_bd();
-    $sql = "SELECT Prestamos.ID_pedido, Prestamos.Tipo, Prestamos.Descripcion, Prestamos.Fecha, Persona.Nombre
-    FROM Prestamos JOIN Persona ON Prestamos.ID_persona = Persona.ID WHERE Persona.ID=$persona";
-
-    $consulta = mysqli_query($conexion, $sql);
-    $filas = array();
-
-    if ($consulta) {
-        if (mysqli_num_rows($consulta) > 0) {
-            while ($row = mysqli_fetch_assoc($consulta)) {
-                array_push($filas, $row);
-            }
-        }
-    }
-
-
-
-
-    $resultado = "<table class=\"table\">
-		<thead>
-			<tr>
-				<th>ID Pedido</th>
-				<th>Tipo</th>
-				<th>Descripcion</th>
-				<th>Fecha</th>
-                <th>Nombre</th>
-			</tr>
-		</thead>
-		<tbody>";
-
-    foreach ($filas as $linea) {
-        $resultado .= '<tr>';
-        $resultado .= '<td scope="row">' . $linea['ID_pedido'] . "</td>\n";
-        $resultado .= '<td scope="row">' . $linea['Tipo'] . "</td>\n";
-        $resultado .= '<td scope="row">' . $linea['Descripcion'] . "</td>\n";
-        $resultado .= '<td scope="row">' . $linea['Fecha'] . "</td>\n";
-        $resultado .= '<td scope="row">' . $linea['Nombre'] . "</td>\n";
-        $resultado .= '</tr>';
-    }
-    $resultado .= "</tbody></table>";
-
-    echo $resultado;
-
-?>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+  <?php
+  echo tabla_friend_detail();
+  ?>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
