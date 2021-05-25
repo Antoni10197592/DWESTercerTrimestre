@@ -30,13 +30,7 @@ function get_persona_id($name)/*comprueba el ID del nombre que recibe */
 }
 function get_prestamos()/*obtiene los prestamos */
 {
-    $usuario = 'antoni';
-    $contrasenya = 'alumno';
-    $servidor = 'localhost';
-    $bdatos = 'prestamos';
-
-    $conexion = mysqli_connect($servidor, $usuario, $contrasenya, ); /* */
-    $db = mysqli_select_db($conexion, $bdatos);
+    $conexion = conexion_bd();
     $sql = "SELECT Prestamos.ID_pedido, Prestamos.Tipo, Prestamos.Descripcion, Prestamos.Fecha, Persona.Nombre
     FROM Prestamos JOIN Persona ON Prestamos.ID_persona = Persona.ID";
 
