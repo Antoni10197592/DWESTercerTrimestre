@@ -1,4 +1,4 @@
-<?php require_once 'utils.php';
+<?php require_once 'db.php';
 
 	$id=$_GET['ID_pedido'];
 	$tipo=$_GET['type'];

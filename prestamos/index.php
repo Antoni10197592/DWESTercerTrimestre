@@ -1,4 +1,4 @@
-<?php require_once 'lib/utils.php';?>
+<?php require_once 'lib/utils.php'; require_once 'lib/db.php';?>
 
 <!doctype html>
 <html lang="en">
