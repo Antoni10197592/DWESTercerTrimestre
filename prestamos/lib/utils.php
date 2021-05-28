@@ -18,7 +18,19 @@ function get_prestamos_tabla($filas)
 		</thead>
 		<tbody>";
 
+        
+        $db= new Database();
+        $prestamos=$db-> get_prestamos();
+
     foreach ($filas as $linea) {
+        $ID_pedido = $linea['0'];
+        $tipo = $linea['1'];
+        $descripcion=['2'];
+        $fecha = $linea['3'];
+        $nombre = $linea['4'];
+        
+        
+
         $resultado .= '<tr>';
         $resultado .= '<td scope="row">' . $linea['ID_pedido'] . "</td>\n";
         $resultado .= '<td scope="row">' . $linea['Tipo'] . "</td>\n";
@@ -36,9 +48,10 @@ function get_prestamos_tabla($filas)
 
 }
 
+function get_amigos_tabla(){
 
-function get_amigos_tabla($filas)
-{
+    $db = new Database();
+    $filas = $db->getAmigos();
 
     $resultado = "<table class=\"table table-sm\">
 		<thead>
@@ -110,4 +123,52 @@ function tabla_friend_detail(){
 
     return $resultado;
     }
+?>
+<?php
+/*
+
+
+
+function getPrestamoAmigoLista()
+{
+
+    $resultado = '<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Información</th>
+        <th scope="col">Fecha</th>
+      </tr>
+    </thead>
+    <tbody>';
+    $contador = 0;
+
+    $db = new Database();
+    $arrayDatos = $db->getPrestamoAmigo();
+
+    foreach ($arrayDatos as $linea) {
+        $id = $linea['1'];
+        $nombreAmigo = $linea['0'];
+        $tipo = $linea['2'];
+        $informacion = $linea['3'];
+        $fecha = $linea['4'];
+        $contador = $contador + 1;
+
+        $resultado .= '<tr>
+        <th scope="row">' . $contador . '</th>
+        <td>' . $nombreAmigo . '</td>
+        <td>' . $tipo . '</td>
+        <td>' . $informacion . '</td>
+        <td>' . $fecha . '</td>
+        <td><a href="./controller.php?id=' . $id . '&action=delete">Borrar</a> /
+            <a href="./controller.php?id=' . $id . '&action=edit">Editar</a></td>
+      </tr>';
+    }
+    $resultado .= '</tbody>
+    </table>';
+
+    return $resultado;
+}*/
 ?>

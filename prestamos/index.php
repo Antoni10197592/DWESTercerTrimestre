@@ -16,9 +16,11 @@
   <a href="add.php">Nuevo Prestamo</a>	<!--Link a Nuevo Prestamo-->
   
   <?php
-  $lista=get_prestamos();
+  $db= new Database();
+  $lista=$db-> get_prestamos();
+  
   echo get_prestamos_tabla($lista);
-  $amigos=get_amigos();
+  $amigos=$db-> get_amigos();
   echo get_amigos_tabla($amigos);
   ?>
 
