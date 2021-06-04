@@ -28,7 +28,7 @@ class Database
 
         $resultado = $this->conexion->query($select);
 
-        $row = $resultado->fetch_all();
+        $row = $resultado->fetch_assoc();
 
         if ($row == null) {
             return false;
@@ -62,6 +62,27 @@ class Database
 
         return $resultado;
     }
+    public function get_prestamos_amigos(){
+        $db = new Database();
+        $persona = $db->get_persona_id($_GET["Nombre"]);
+    
+        $sql = "SELECT Prestamos.ID_pedido, Prestamos.Tipo, Prestamos.Descripcion, Prestamos.Fecha, Persona.Nombre
+        FROM Prestamos JOIN Persona ON Prestamos.ID_persona = Persona.ID WHERE Persona.ID=$persona";
+    
+    
+        $consulta = $db->conexion->query($sql);
+        $resultado = $consulta->fetch_all();
+    
+        return $resultado;
+    }
+
+    function borrar(){
+        $db=new Database();
+
+        $sql="DELETE FROM Prestamos WHERE ID_pedido=$id";
+        $consulta=$db->conexion->query($sql);
+        
+    }
 
     public function insertarPrestamo($name, $type, $title, $date)
     {
@@ -72,7 +93,7 @@ class Database
 
         $datos = $this->conexion->query($sql);
 
-        $id = get_persona_id($name);
+        $id = $this->get_persona_id($name);
 
         if ($id == false) {
 
@@ -81,7 +102,7 @@ class Database
             $insertPersonasql = $this->conexion->query($insertPersona);
 
             /*recuperamos el nuevo id */
-            $id = get_persona_id($name);
+            $id = $this->get_persona_id($name);
 
             /*insertamos el prestamo */
             $insertPrestamo = "INSERT INTO Prestamos (Tipo, Descripcion, Fecha, ID_persona)
