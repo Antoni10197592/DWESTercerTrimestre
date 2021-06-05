@@ -76,6 +76,7 @@ class Database
         return $resultado;
     }
 
+<<<<<<< HEAD
     function borrar_prestamo($id){
 
         $sql="DELETE FROM Prestamos WHERE ID_pedido=$id";
@@ -92,6 +93,16 @@ class Database
 
 	}
 
+=======
+    function borrar(){
+        $db=new Database();
+
+        $sql="DELETE FROM Prestamos WHERE ID_pedido=$id";
+        $consulta=$db->conexion->query($sql);
+        
+    }
+
+>>>>>>> 46b774e343dea72642bd57b5cca6768e8ec5128d
     public function insertarPrestamo($name, $type, $title, $date)
     {
 
