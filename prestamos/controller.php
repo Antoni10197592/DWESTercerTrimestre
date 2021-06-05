@@ -1,4 +1,4 @@
-<?php require_once 'lib/utils.php';
+<?php require_once 'lib/db.php';
 session_start();
 
 if(isset($_POST['Guardar'])){
@@ -17,7 +17,9 @@ if(isset($_POST['Guardar'])){
 
     else {
         // Guardo el contenido en el fichero. 
-        insertarPrestamo($name, $type, $title, $date);
+        $db=new Database();
+
+        $db->insertarPrestamo($name, $type, $title, $date);
         session_destroy();
         // Redirecciono al usuario a la página principal del sitio.
         header("Location: index.php");
